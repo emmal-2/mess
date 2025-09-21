@@ -1,4 +1,6 @@
 import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+
 
 const apartments = [
   {
@@ -55,6 +57,9 @@ const apartments = [
 
 const ApartmentShowcase = () => {
   const navigate = useNavigate();
+    const location = useLocation();
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
   
   return (
     <section id="apartments" className="py-20 bg-[#F5F2EC]">
@@ -195,6 +200,17 @@ const ApartmentShowcase = () => {
                   Minimum 3 nuits pour les appartements
                 </li>
               </ul>
+            </div>
+            <div>
+            <button 
+                className="px-6 py-2 bg-[#7C3030] text-white rounded-sm hover:bg-[#6a2828] transition-all mt-2 mx-4 border border-[#D4AF37]"
+                onClick={() => {
+                  navigate('/reservation');
+                  setIsMenuOpen(false);
+                }}
+              >
+                Réserver
+              </button>
             </div>
           </div>
         </div>
